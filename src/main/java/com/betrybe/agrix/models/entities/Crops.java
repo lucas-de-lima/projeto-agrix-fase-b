@@ -116,4 +116,8 @@ public class Crops {
   public void addFertilizer(Fertilizers fertilizer) {
     this.fertilizers.add(fertilizer);
   }
+
+  public List<Fertilizers> getFertilizers() {
+    return fertilizers;
+  }
 }

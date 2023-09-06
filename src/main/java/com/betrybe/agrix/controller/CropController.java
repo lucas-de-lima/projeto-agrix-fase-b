@@ -3,7 +3,9 @@ package com.betrybe.agrix.controller;
 
 import com.betrybe.agrix.controller.dto.CropBodyDto;
 import com.betrybe.agrix.controller.dto.CropDto;
+import com.betrybe.agrix.controller.dto.FertilizerDto;
 import com.betrybe.agrix.models.entities.Crops;
+import com.betrybe.agrix.models.entities.Fertilizers;
 import com.betrybe.agrix.services.CropService;
 import com.betrybe.agrix.util.ModelDtoConverter;
 import java.time.LocalDate;
@@ -87,6 +89,13 @@ public class CropController {
       @RequestParam(name = "end") LocalDate end) {
     List<Crops> crops = cropService.getCropsByHarvestDateBetween(start, end);
     return crops.stream().map(ModelDtoConverter::cropToDto).toList();
+  }
+
+  @GetMapping("/crops/{cropId}/fertilizers")
+  @ResponseStatus(HttpStatus.OK)
+  public List<FertilizerDto> getFertilizersByCropId(@PathVariable(name = "cropId") long cropId) {
+    List<Fertilizers> fertilizers = cropService.getFertilizersByCropId(cropId);
+    return fertilizers.stream().map(ModelDtoConverter::fertilizerToDto).toList();
   }
 
 }

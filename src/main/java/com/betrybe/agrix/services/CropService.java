@@ -4,6 +4,7 @@ import com.betrybe.agrix.exeptions.CropNotFoundExeption;
 import com.betrybe.agrix.exeptions.FarmNotFoundExeption;
 import com.betrybe.agrix.models.entities.Crops;
 import com.betrybe.agrix.models.entities.Farms;
+import com.betrybe.agrix.models.entities.Fertilizers;
 import com.betrybe.agrix.models.repositories.CropsRepositories;
 import com.betrybe.agrix.models.repositories.FarmsRepositories;
 import java.time.LocalDate;
@@ -80,4 +81,8 @@ public class CropService {
     cropsRepositories.save(crop);
   }
 
+  public List<Fertilizers> getFertilizersByCropId(Long cropId) {
+    Crops crop = getCropById(cropId);
+    return crop.getFertilizers();
+  }
 }
