@@ -6,6 +6,7 @@ import com.betrybe.agrix.models.entities.Crops;
 import com.betrybe.agrix.models.entities.Farms;
 import com.betrybe.agrix.models.repositories.CropsRepositories;
 import com.betrybe.agrix.models.repositories.FarmsRepositories;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,10 @@ public class CropService {
       throw new CropNotFoundExeption();
     }
     return crops.get();
+  }
+
+  public List<Crops> getCropsByHarvestDateBetween(LocalDate start, LocalDate end) {
+    return cropsRepositories.findByHarvestDateBetween(start, end);
   }
 
 }
