@@ -7,9 +7,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Crops.
@@ -35,6 +39,14 @@ public class Crops {
   @Column(name = "harvest_date")
   private LocalDate harvestDate;
 
+  @ManyToMany
+  @JoinTable(
+    name = "crop_fertilizer",
+    joinColumns = @JoinColumn(name = "crop_id"),
+    inverseJoinColumns = @JoinColumn(name = "fertilizer_id")
+  )
+  private List<Fertilizers> fertilizers = new ArrayList<>();
+
   public Crops() {
   }
 
@@ -42,21 +54,16 @@ public class Crops {
    * Crops.
    */
 
-  public Crops(
-          Long id,
-          String name,
-          Double plantedArea,
-          Farms farm,
-          LocalDate plantedDate,
-          LocalDate harvestDate
-  ) {
-    this.id = id;
-    this.name = name;
-    this.plantedArea = plantedArea;
-    this.farm = farm;
-    this.plantedDate = plantedDate;
-    this.harvestDate = harvestDate;
-  }
+   public Crops(Long id, String name, Double plantedArea, Farms farm,
+              LocalDate plantedDate, LocalDate harvestDate, List<Fertilizers> fertilizers) {
+  this.id = id;
+  this.name = name;
+  this.plantedArea = plantedArea;
+  this.farm = farm;
+  this.plantedDate = plantedDate;
+  this.harvestDate = harvestDate;
+  this.fertilizers = fertilizers;
+}
 
   public Long getId() {
     return id;

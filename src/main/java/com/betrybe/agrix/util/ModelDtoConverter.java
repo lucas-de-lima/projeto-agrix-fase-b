@@ -4,8 +4,11 @@ import com.betrybe.agrix.controller.dto.CropBodyDto;
 import com.betrybe.agrix.controller.dto.CropDto;
 import com.betrybe.agrix.controller.dto.FarmBodyDto;
 import com.betrybe.agrix.controller.dto.FarmDto;
+import com.betrybe.agrix.controller.dto.FertilizerBodyDto;
+import com.betrybe.agrix.controller.dto.FertilizerDto;
 import com.betrybe.agrix.models.entities.Crops;
 import com.betrybe.agrix.models.entities.Farms;
+import com.betrybe.agrix.models.entities.Fertilizers;
 
 /**
  * ModelDtoConverter.
@@ -63,6 +66,23 @@ public class ModelDtoConverter {
       crop.getFarm().getId(),
       crop.getPlantedDate(),
       crop.getHarvestDate()
+    );
+  }
+
+  public static Fertilizers dtoToFertilizers(FertilizerBodyDto dto) {
+    Fertilizers fertilizer = new Fertilizers();
+    fertilizer.setName(dto.name());
+    fertilizer.setBrand(dto.brand());
+    fertilizer.setComposition(dto.composition());
+    return fertilizer;
+  }
+
+  public static FertilizerDto fertilizerToDto(Fertilizers fertilizer) {
+    return new FertilizerDto(
+      fertilizer.getId(),
+      fertilizer.getName(),
+      fertilizer.getBrand(),
+      fertilizer.getComposition()
     );
   }
 
