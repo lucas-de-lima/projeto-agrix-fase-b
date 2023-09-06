@@ -1,6 +1,10 @@
 package com.betrybe.agrix.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -8,17 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import com.betrybe.agrix.controller.dto.FertilizerBodyDto;
 import com.betrybe.agrix.controller.dto.FertilizerDto;
+import com.betrybe.agrix.models.entities.Crops;
 import com.betrybe.agrix.models.entities.Fertilizers;
+import com.betrybe.agrix.services.CropService;
 import com.betrybe.agrix.services.FertilizerService;
 import com.betrybe.agrix.util.ModelDtoConverter;
 
 @RestController
 public class FertilizerController {
   private final FertilizerService fertilizerService;
-
+  private final CropService cropService;
+  
   @Autowired
-  public FertilizerController(FertilizerService fertilizerService) {
+  public FertilizerController(FertilizerService fertilizerService, CropService cropService) {
     this.fertilizerService = fertilizerService;
+    this.cropService = cropService;
   }
 
   @PostMapping("/fertilizers")
@@ -27,5 +35,30 @@ public class FertilizerController {
     Fertilizers fertilizer = ModelDtoConverter.dtoToFertilizers(fertilizerDto);
     Fertilizers response = fertilizerService.insertFertilizer(fertilizer);
     return ModelDtoConverter.fertilizerToDto(response);
+  }
+
+  @GetMapping("/fertilizers")
+  @ResponseStatus(HttpStatus.OK)
+  public List<FertilizerDto> getAllFertilizer() {
+    List<Fertilizers> fertilizers = fertilizerService.getAllFertilizers();
+    return fertilizers.stream().map(ModelDtoConverter::fertilizerToDto).toList();
+  }
+
+  @GetMapping("/fertilizers/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public FertilizerDto getFertilizerById(@PathVariable(name = "id") long id) {
+    Fertilizers fertilizer = fertilizerService.getFertilizersById(id);
+    return ModelDtoConverter.fertilizerToDto(fertilizer);
+  }
+
+  @PostMapping("/crops/{cropId}/fertilizers/{fertilizerId}")
+  @ResponseStatus(HttpStatus.CREATED)
+  public String insertFertilizerInCrop(@PathVariable(name = "cropId") long cropId,
+      @PathVariable(name = "fertilizerId") long fertilizerId) {
+        Crops crop = cropService.getCropById(cropId);
+        Fertilizers fertilizer = fertilizerService.getFertilizersById(fertilizerId);
+        crop.addFertilizer(fertilizer);
+        cropService.recordCrop(crop);
+        return "Fertilizante e plantação associados com sucesso!";
   }
 }

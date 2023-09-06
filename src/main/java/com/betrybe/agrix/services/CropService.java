@@ -76,4 +76,8 @@ public class CropService {
     return cropsRepositories.findByHarvestDateBetween(start, end);
   }
 
+  public void recordCrop(Crops crop) {
+    cropsRepositories.save(crop);
+  }
+
 }

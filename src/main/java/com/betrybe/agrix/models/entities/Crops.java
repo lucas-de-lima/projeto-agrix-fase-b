@@ -112,4 +112,8 @@ public class Crops {
   public void setHarvestDate(LocalDate harvestDate) {
     this.harvestDate = harvestDate;
   }
+
+  public void addFertilizer(Fertilizers fertilizer) {
+    this.fertilizers.add(fertilizer);
+  }
 }
