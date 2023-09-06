@@ -1,5 +1,6 @@
 package com.betrybe.agrix.models.entities;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 
 /**
  * Crops.
@@ -27,6 +29,12 @@ public class Crops {
   @JoinColumn(name = "farm_id")
   private Farms farm;
 
+  @Column(name = "planting_date")
+  private LocalDate plantedDate;
+
+  @Column(name = "harvest_date")
+  private LocalDate harvestDate;
+
   public Crops() {
   }
 
@@ -34,11 +42,20 @@ public class Crops {
    * Crops.
    */
 
-  public Crops(Long id, String name, Double plantedArea, Farms farm) {
+  public Crops(
+          Long id,
+          String name,
+          Double plantedArea,
+          Farms farm,
+          LocalDate plantedDate,
+          LocalDate harvestDate
+  ) {
     this.id = id;
     this.name = name;
     this.plantedArea = plantedArea;
     this.farm = farm;
+    this.plantedDate = plantedDate;
+    this.harvestDate = harvestDate;
   }
 
   public Long getId() {
@@ -73,4 +90,19 @@ public class Crops {
     this.farm = farm;
   }
 
+  public LocalDate getPlantedDate() {
+    return plantedDate;
+  }
+
+  public void setPlantedDate(LocalDate plantedDate) {
+    this.plantedDate = plantedDate;
+  }
+
+  public LocalDate getHarvestDate() {
+    return harvestDate;
+  }
+
+  public void setHarvestDate(LocalDate harvestDate) {
+    this.harvestDate = harvestDate;
+  }
 }

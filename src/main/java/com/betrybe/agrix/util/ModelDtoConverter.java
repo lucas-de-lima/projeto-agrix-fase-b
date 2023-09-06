@@ -46,7 +46,8 @@ public class ModelDtoConverter {
 
     crop.setName(dto.name());
     crop.setPlantedArea(dto.plantedArea());
-
+    crop.setPlantedDate(dto.plantedDate());
+    crop.setHarvestDate(dto.harvestDate());
     return crop;
   }
 
@@ -59,7 +60,9 @@ public class ModelDtoConverter {
       crop.getId(),
       crop.getName(),
       crop.getPlantedArea(),
-      crop.getFarm().getId()
+      crop.getFarm().getId(),
+      crop.getPlantedDate(),
+      crop.getHarvestDate()
     );
   }
 
