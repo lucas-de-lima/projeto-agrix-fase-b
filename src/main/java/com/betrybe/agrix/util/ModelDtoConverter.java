@@ -69,6 +69,10 @@ public class ModelDtoConverter {
     );
   }
 
+  /**
+   * Convert from dto to model.
+   */
+
   public static Fertilizers dtoToFertilizers(FertilizerBodyDto dto) {
     Fertilizers fertilizer = new Fertilizers();
     fertilizer.setName(dto.name());
@@ -76,6 +80,10 @@ public class ModelDtoConverter {
     fertilizer.setComposition(dto.composition());
     return fertilizer;
   }
+
+  /**
+   * Convert from model to dto.
+   */
 
   public static FertilizerDto fertilizerToDto(Fertilizers fertilizer) {
     return new FertilizerDto(

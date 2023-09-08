@@ -1,8 +1,5 @@
 package com.betrybe.agrix.models.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +8,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Fertilizers.
+ */
 @Entity
 @Table(name = "fertilizer")
 public class Fertilizers {
@@ -24,12 +26,15 @@ public class Fertilizers {
 
   @ManyToMany
   @JoinTable(
-    name = "crop_fertilizer",
-    joinColumns = @JoinColumn(name = "fertilizer_id"),
-    inverseJoinColumns = @JoinColumn(name = "crop_id")
+      name = "crop_fertilizer",
+      joinColumns = @JoinColumn(name = "fertilizer_id"),
+      inverseJoinColumns = @JoinColumn(name = "crop_id")
   )
   private List<Crops> crops = new ArrayList<>();
 
+  /**
+   * Fertilizers.
+   */
   public Fertilizers(Long id, String name, String brand, String composition, List<Crops> crops) {
     this.id = id;
     this.name = name;

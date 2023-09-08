@@ -41,9 +41,9 @@ public class Crops {
 
   @ManyToMany
   @JoinTable(
-    name = "crop_fertilizer",
-    joinColumns = @JoinColumn(name = "crop_id"),
-    inverseJoinColumns = @JoinColumn(name = "fertilizer_id")
+      name = "crop_fertilizer",
+      joinColumns = @JoinColumn(name = "crop_id"),
+      inverseJoinColumns = @JoinColumn(name = "fertilizer_id")
   )
   private List<Fertilizers> fertilizers = new ArrayList<>();
 
@@ -54,16 +54,16 @@ public class Crops {
    * Crops.
    */
 
-   public Crops(Long id, String name, Double plantedArea, Farms farm,
+  public Crops(Long id, String name, Double plantedArea, Farms farm,
               LocalDate plantedDate, LocalDate harvestDate, List<Fertilizers> fertilizers) {
-  this.id = id;
-  this.name = name;
-  this.plantedArea = plantedArea;
-  this.farm = farm;
-  this.plantedDate = plantedDate;
-  this.harvestDate = harvestDate;
-  this.fertilizers = fertilizers;
-}
+    this.id = id;
+    this.name = name;
+    this.plantedArea = plantedArea;
+    this.farm = farm;
+    this.plantedDate = plantedDate;
+    this.harvestDate = harvestDate;
+    this.fertilizers = fertilizers;
+  }
 
   public Long getId() {
     return id;
