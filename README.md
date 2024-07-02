@@ -1,6 +1,14 @@
 # Agrix - Fase B
 
-Bem-vindo ao projeto Agrix - Fase B! Este projeto é uma extensão da Fase A, com novas funcionalidades. Abaixo, detalho as etapas que foram realizadas com sucesso para atender aos requisitos desta fase.
+## Confira todas as fases do projeto aqui:
+
+| Fase  | Link                                                                 |
+|-------|----------------------------------------------------------------------|
+| Fase A| [Fase A](https://github.com/lucas-de-lima/projeto-agrix-fase-a)     |
+| Fase B| [Fase B](https://github.com/lucas-de-lima/projeto-agrix-fase-b)     |
+| Fase C| [Fase C](https://github.com/lucas-de-lima/projeto-agrix-fase-c)     |
+
+Bem-vindo ao projeto Agrix - [Fase B](https://github.com/lucas-de-lima/projeto-agrix-fase-b)! Este projeto é uma extensão da [Fase A](https://github.com/lucas-de-lima/projeto-agrix-fase-a), com novas funcionalidades. Abaixo, detalho as etapas que foram realizadas com sucesso para atender aos requisitos desta fase.
 
 ## Especificações do Projeto
 
