@@ -2,11 +2,11 @@
 
 ## Confira todas as fases do projeto aqui:
 
-| Fase  | Link                                                                 |
-|-------|----------------------------------------------------------------------|
-| Fase A| [Fase A](https://github.com/lucas-de-lima/projeto-agrix-fase-a)     |
-| Fase B| [Fase B](https://github.com/lucas-de-lima/projeto-agrix-fase-b)     |
-| Fase C| [Fase C](https://github.com/lucas-de-lima/projeto-agrix-fase-c)     |
+| Fase   | Link                                                            |
+| ------ | --------------------------------------------------------------- |
+| Fase A | [Fase A](https://github.com/lucas-de-lima/projeto-agrix-fase-a) |
+| Fase B | [Fase B](https://github.com/lucas-de-lima/projeto-agrix-fase-b) |
+| Fase C | [Fase C](https://github.com/lucas-de-lima/projeto-agrix-fase-c) |
 
 Bem-vindo ao projeto Agrix - [Fase B](https://github.com/lucas-de-lima/projeto-agrix-fase-b)! Este projeto é uma extensão da [Fase A](https://github.com/lucas-de-lima/projeto-agrix-fase-a), com novas funcionalidades. Abaixo, detalho as etapas que foram realizadas com sucesso para atender aos requisitos desta fase.
 
@@ -15,6 +15,12 @@ Bem-vindo ao projeto Agrix - [Fase B](https://github.com/lucas-de-lima/projeto-a
 ### 🗄️ Descrição do Banco de Dados
 
 Na Fase B, o banco de dados foi ampliado. A estrutura atualizada inclui as tabelas `farm`, `crop`, `fertilizer` e `crop_fertilizer` com os relacionamentos necessários para suportar as novas funcionalidades.
+
+Neste modelo, temos as seguintes tabelas:
+
+- **`farm`**: representa uma fazenda.
+- **`crop`**: representa uma plantação e está em um relacionamento `n:1` (muitos para um) com a tabela `farm`.
+- **`fertilizer`**: representa um fertilizante e está em um relacionamento `n:n` (muitos para muitos) com a tabela `crop`. Esse relacionamento é realizado através da tabela `crop_fertilizer`.
 
 ![Modelo de tabelas](images/agrix-tabelas-fase-b.png)
 
@@ -306,3 +312,7 @@ Exemplo de resposta:
 ## Conclusão
 
 Todos os requisitos da Fase B foram atendidos com sucesso, garantindo a expansão das funcionalidades do Agrix e mantendo a qualidade e integridade do projeto. O projeto está pronto para ser utilizado, oferecendo uma experiência robusta e eficiente para os usuários.
+Neste projeto além do que consegui fazer na [Fase A](https://github.com/lucas-de-lima/projeto-agrix-fase-a), eu também consegui ser capaz de:
+- Como implementar buscas customizadas.
+- Utilizar campos de data nas rotas da API e no banco de dados.
+- Criar testes unitários para garantir a qualidade e funcionamento correto da implementação, com cobertura de código adequada.
